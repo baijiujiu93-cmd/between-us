@@ -64,6 +64,47 @@ h1{
     白白是哥哥的，哥哥也是白白的。❤️
   </p>
 </div>
+<div id="memory-toc"></div>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  document.documentElement.style.scrollBehavior = "smooth";
+  const memories = document.querySelectorAll(".memory h3");
+  const toc = document.getElementById("memory-toc");
+  if (!toc) return;
+  toc.innerHTML = `
+    <div style="
+      background: white;
+      max-width: 650px;
+      margin: 20px auto 30px;
+      padding: 22px;
+      border-radius: 20px;
+      box-shadow: 0 6px 18px rgba(255, 150, 190, 0.25);
+      text-align: center;
+    ">
+      <h2 style="color: #ff7aa2; margin-top: 0;">📖 回忆目录</h2>
+      <p style="color: #666;">点一下标题，就能跳到那一篇回忆。</p>
+      <div id="toc-links" style="margin-top: 15px;"></div>
+    </div>
+  `;
+  const linksBox = document.getElementById("toc-links");
+  memories.forEach(function (title, index) {
+    const id = "memory-" + (index + 1);
+    title.id = id;
+    const link = document.createElement("a");
+    link.href = "#" + id;
+    link.textContent = title.textContent;
+    link.style.display = "block";
+    link.style.background = "#fff7fb";
+    link.style.color = "#555";
+    link.style.textDecoration = "none";
+    link.style.padding = "12px";
+    link.style.borderRadius = "14px";
+    link.style.margin = "8px 0";
+    link.style.fontWeight = "bold";
+    linksBox.appendChild(link);
+  });
+});
+</script>
 <div class="memory">
     <p class="date">2026.06.14</p>
 <h3>🏠 第一篇回忆：我们的小房子诞生啦</h3>
